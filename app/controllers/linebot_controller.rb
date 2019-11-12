@@ -1,4 +1,5 @@
 class LinebotController < ApplicationController
+  skip_before_action :verify_authenticity_token
   require 'line/bot'
 
   def callback
@@ -8,7 +9,6 @@ class LinebotController < ApplicationController
       error 400 do 'Bad Request' end
     end
     events = client.parse_events_form(body)
-
     events.each do |event|
       case event
       when Line::Bot::Event::follow
