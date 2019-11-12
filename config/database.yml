@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: weather_scraping_production
-  username: weather_scraping
-  password: <%= ENV['WEATHER_SCRAPING_DATABASE_PASSWORD'] %>
+  database: heroku_00ed342d437388e
+  username: b476ba37882a27
+  password: <%= ENV['DATABASE_PASSWORD'] %>
