@@ -21,8 +21,14 @@ class ScrapingController < ApplicationController
       config.channel_secret = ENV['LINE_CHANNEL_SECRET']
       config.channel_token = ENV['LINE_CHANNEL_TOKEN']
     }
-    response = client.push_message(ENV['LINE_MY_USER_ID'], message)
+    User.all.each do |user| 
+      response = client.push_message(user.token, message)
+    end
     redirect_to scraping_url
+  end
+
+  def callback
+
   end
 
   private 
