@@ -1,0 +1,6 @@
+<h2><%= @content %></h2>
+
+<%= form_with(scope: :post, url: scraping_url, local: true) do |f| %>
+  <%= f.text_field :text %>
+  <%= f.submit :"送信" %>
+<% end %>
