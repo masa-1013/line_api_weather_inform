@@ -12,9 +12,8 @@ class LinebotController < ApplicationController
     events.each do |event|
       case event
       when Line::Bot::Event::Follow
-          User.create!(token: event.source['userId'])
-          client.reply_message(event['replyToken'], '登録ありがとう！！！！')
-        end
+        User.create!(token: event.source['userId'])
+        client.reply_message(event['replyToken'], '登録ありがとう！！！！')
       end
     end
     head :ok
