@@ -12,9 +12,7 @@ class LinebotController < ApplicationController
     events.each do |event|
       case event
       when Line::Bot::Event::Follow
-        case event.type
-        when Line::Bot::Event::SourceType::User
-          User.create!(token: event[:source][:userId])
+          User.create!(token: event.source['userId'])
           client.reply_message(event['replyToken'], '登録ありがとう！！！！')
         end
       end
