@@ -9,14 +9,11 @@ class LinebotController < ApplicationController
       error 400 do 'Bad Request' end
     end
     events = client.parse_events_from(body)
-    events.each do |event|
-      event.each do |item|
-        logger.debug "#{item}"
-      end
-      
+    events.each do |event|      
       case event
       when Line::Bot::Event::Follow
         #User.create!(token: event.source['userId'])
+        logger.debug "foge"
         client.reply_message(event['replyToken'], '登録ありがとう！！！！')
       end
     end
