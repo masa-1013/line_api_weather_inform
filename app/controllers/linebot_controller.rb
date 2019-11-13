@@ -10,7 +10,10 @@ class LinebotController < ApplicationController
     end
     events = client.parse_events_from(body)
     events.each do |event|
-      logger.debug "#{event}"
+      event.each do |item|
+        logger.debug "#{item}"
+      end
+      
       case event
       when Line::Bot::Event::Follow
         #User.create!(token: event.source['userId'])
