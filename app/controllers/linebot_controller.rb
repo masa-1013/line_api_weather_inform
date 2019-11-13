@@ -13,8 +13,12 @@ class LinebotController < ApplicationController
       case event
       when Line::Bot::Event::Follow
         #User.create!(token: event.source['userId'])
-        logger.debug "#{event['replyToken']}"
-        client.reply_message(event['replyToken'], '登録ありがとう！！！！')
+        logger.debug "#{event['userId']}"
+        message = {
+          type: 'text',
+          text: '登録ありがとう！！！！'
+        }
+        client.reply_message(event['replyToken'], message)
       end
     end
     head :ok
