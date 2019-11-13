@@ -13,7 +13,7 @@ class LinebotController < ApplicationController
       case event
       when Line::Bot::Event::Follow
         #User.create!(token: event.source['userId'])
-        logger.debug "#{event['userId']}"
+        logger.debug "#{event['source']}"
         message = {
           type: 'text',
           text: '登録ありがとう！！！！'
